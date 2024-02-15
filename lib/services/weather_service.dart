@@ -22,8 +22,9 @@ class WeatherService {
       final String errorMessage = e.response?.data['error']['message'] ??
           'oops there was an error, try later';
       throw Exception(errorMessage);
-    } catch(e) {
+    } catch (e) {
       print('errror');
     }
+    return null;
   }
 }
