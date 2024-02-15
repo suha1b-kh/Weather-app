@@ -12,44 +12,40 @@ class HomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Weather App',
-        style: TextStyle(
-            color: Colors.white
+        appBar: AppBar(
+          title: const Text(
+            'Weather App',
+            style: TextStyle(color: Colors.white),
           ),
-        ),
-        backgroundColor: Colors.blueAccent,
-        actions: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: IconButton(
-              onPressed: (){
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context){
-                      return SearchView();
-                    },
+          actions: [
+            Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) {
+                          return SearchView();
+                        },
+                      ),
+                    );
+                  },
+                  icon: Icon(
+                    Icons.search_rounded,
+                    color: Colors.white,
                   ),
-                );
-              },
-              icon: Icon(
-                Icons.search_rounded,
-                color: Colors.white,
-              ),
-            )
-          )
-        ],
-      ),
-      body: BlocBuilder<GetWeatherCubit,WeatherState>(
-        builder: (context,state){
-          if(state is NoWeatherState)
-            return NoWeatherBody();
-          else if(state is WeatherLoadedState)
-            return WeatherInfoBody();
-          else
-            return Text('OPPS There was an error !!');
-        },
-      )
-    );
+                ))
+          ],
+        ),
+        body: BlocBuilder<GetWeatherCubit, WeatherState>(
+          builder: (context, state) {
+            if (state is NoWeatherState)
+              return NoWeatherBody();
+            else if (state is WeatherLoadedState)
+              return WeatherInfoBody();
+            else
+              return Text('OPPS There was an error !!');
+          },
+        ));
   }
 }

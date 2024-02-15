@@ -17,12 +17,12 @@ class WeatherApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) {
-        return GetWeatherCubit(NoWeatherState() as Function());
+        return GetWeatherCubit();
       },
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-          home: HomeView()
-      ),
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(primarySwatch: Colors.amber),
+          home: const HomeView()),
     );
   }
 }
